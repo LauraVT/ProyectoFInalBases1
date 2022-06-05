@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Crear examen</title>
+</h:head>
+<h:body>
+    <p:panel header="Crear examen">
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="descripcion_e"  value="Descripcion: " />
+                <p:inputText id ="descripcion_e"    value="#{examenBean.examen.descripcion}" required="true"/>
+
+                <div class="p-field p-col-12 p-md-4" >
+                    <p:outputLabel for="button" value="Fecha: "/>
+                    <p:datePicker id="button" value="#{examenBean.examen.fecha}" showIcon="true"/>
+                </div>
+
+                <p:outputLabel for="preguntas"   value="Lista Preguntas: " />
+                <p:selectOneMenu id="preguntas"      value="#{examenBean.examen.listaPreguntaExamen}" required="true">
+                    <f:selectItems value="#{examenBean.preguntaList}" var="pregunta" itemLabel="pregunta.nombre" itemValue="#{pregunta}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel for="temas"   value="Lista Temas: " />
+                <p:selectOneMenu id="temas"      value="#{examenBean.examen.listaTema}" required="true">
+                    <f:selectItems value="#{examenBean.temaList}" var="tema" itemLabel="tema.nombre" itemValue="#{tema}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel for="estudiantes"  value="Lista Estudiantes: " />
+                <p:selectCheckboxMenu id="estudiantes" value="#{examenBean.estudiantesList}" required="true">
+                    <f:selectItems value="#{examenBean.estudiantesList}" var="estudiante" itemLabel="#{estudiante.nombre}" itemValue="#{estudiante}"/>
+                </p:selectCheckboxMenu>
+
+                <p:outputLabel for="docentes"   value="Lista Docentes: " />
+                <p:selectOneMenu id="docentes"      value="#{examenBean.examen.docente}" required="true">
+                    <f:selectItems value="#{examenBean.docenteList}" var="docente" itemLabel="#{docente.nombre}" itemValue="#{docente}"/>
+                </p:selectOneMenu>
+
+
+                <p:outputLabel for="notaMaxima_e"   value="Nota Maxima: " />
+                <p:inputText id="notaMaxima_e"      value="#{examenBean.examen.notaMaxima}" required="true" />
+
+                <p:outputLabel for="notaMinima_e"   value="Nota Minima: " />
+                <p:inputText id="notaMinima_e"      value="#{examenBean.examen.notaMinima}" required="true" />
+
+                <p:outputLabel for="peso_e" value="Peso: " />
+                <p:inputText id="peso_e"    value="#{examenBean.examen.peso}" required="true" />
+
+                <p:outputLabel for="n_Pregunta_e" value="Numero Preguntas: " />
+                <p:inputText id="n_Pregunta_e"    value="#{examenBean.examen.numeroPreguntas}" required="true" />
+
+                <p:outputLabel for="horaInicio_e"        value="Hora de inicio: " />
+                <p:inputText id="horaInicio_e"           value="#{examenBean.examen.horaInicio}" required="true"/>
+
+                <p:outputLabel for="tiempoLimite_e"        value="tiempo Limite " />
+                <p:inputText id="tiempoLimite_e"           value="#{examenBean.examen.tiempoLimite}" required="true"/>
+            </h:panelGrid>
+            <p:commandButton value="Elaborara Examen" action="#{examenBean.ElaborarExamen()}" update="@form" />
+
+            <p:growl showDetail="true" />
+        </h:form>
+    </p:panel>
+</h:body>
+</html>

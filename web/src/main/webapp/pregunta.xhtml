@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pregunta</title>
+</h:head>
+<h:body>
+    <p:panel header="Crear pregunta">
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="descripcion_p"  value="Descripcion: " />
+                <p:inputText id ="descripcion_p"    value="#{preguntaBean.pregunta.descripcion}" required="true"/>
+
+                <p:outputLabel for="tipo_p"   value="Tipo " />
+                <p:inputText id="tipo_p"      value="#{preguntaBean.pregunta.tipo}" required="true" />
+
+                <p:outputLabel for="publica_p"   value="La pregunta es publica: " />
+                <p:inputText id="publica_p"      value="#{preguntaBean.pregunta.publica}" required="true" />
+
+                <p:outputLabel for="numeroPreguntas_p" value=":cantidad de preguntas: " />
+                <p:inputText id="numeroPreguntas_p"    value="#{preguntaBean.pregunta.numeroPreguntas}" required="true" />
+
+            </h:panelGrid>
+            <p:commandButton value="Elaborara Pregunta" action="#{preguntaBean.crearPregunta()}" update="@form" />
+            <p:commandButton value="Actualizar Pregunta" action="#{preguntaBean.modificarPregunta()}" update="@form" />
+
+            <p:growl showDetail="true" />
+        </h:form>
+    </p:panel>
+</h:body>
+</html>

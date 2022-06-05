@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> Registrar persona </title>
+</h:head>
+    <h:body>
+        <p:panel header="Registar persona">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel for="cedula_p" value="Cedula: " />
+                    <p:inputText id = "cedula_p" value="#{personaBean.persona.cedula}" required="true" />
+
+                    <p:outputLabel for="tipo_p" value="Tipo: " />
+                    <p:inputText id ="tipo_p" value="#{personaBean.persona.tipo}" required="true"/>
+
+                    <p:outputLabel for="nombre_p" value="Nombre: " />
+                    <p:inputText id="nombre_p" value="#{personaBean.persona.nombre}" required="true"/>
+
+                    <p:outputLabel for="edad_p" value="Edad: " />
+                    <p:inputText id="edad_p" value="#{personaBean.persona.edad}" />
+
+                    <p:outputLabel for="correo_p" value="Correo: " />
+                    <p:inputText id="correo_p" type="email" value="#{personaBean.persona.correo}" required="true" />
+
+                    <p:outputLabel for="pass_p" value="Contraseña: " />
+                    <p:password id="pass_p" value="#{personaBean.persona.password}" feedback="true" required="true" />
+
+                </h:panelGrid>
+                <p:commandButton value="Registar persona" action="#{personaBean.registarPersona()}" update="@form" />
+                <p:commandButton value="Actualizar persona" action="#{personaBean.actualizarPersona()}" update="@form" />
+                <p:growl showDetail="true" />
+            </h:form>
+        </p:panel>
+        <p:panel header="Eliminar persona">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="cedula_per" value="Cedula: " />
+                    <p:inputText id = "cedula_per" value="#{personaBean.persona.cedula}" required="true" />
+                </h:panelGrid>
+                <p:commandButton value="Eliminar" action="#{personaBean.eliminarPersona()}" update="@form" />
+                <p:growl showDetail="true" />
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>

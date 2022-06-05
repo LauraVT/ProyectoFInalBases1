@@ -1,0 +1,5 @@
+rootProject.name = 'proyectoBases1'
+include 'persistencia'
+include 'web'
+include 'web'
+
